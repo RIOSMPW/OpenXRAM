@@ -10,10 +10,13 @@ generator, we added an option which makes the aspect ratio of the physical layou
 
 ## Generators of Compiler
 OpenXRAM memory compiler is a set of various, parameterized lib generators. These generators are:
+
 • Layout Generator(LEF/GDS)
   Generates an array of custom, pitch-matched lef cells and final GDSII file.
+  
 • Schematic Generator & Netlister(CDL)
   Generates a spice or CDL netlist which can be used for both LVS and functional verification.
+  
 • Function & Timing Model Generators(Lib/V)
   Generates behavior simulation, dynamic/static timing analysis and synthesis models.
 
