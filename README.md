@@ -23,6 +23,15 @@ OpenXRAM memory compiler is a set of various, parameterized lib generators. Thes
   
   Generates behavior simulation, dynamic/static timing analysis and synthesis models.
 
+To customize the configuration of memory macro, designer could setup certain numbers to following four generator parameters:
+• Number of words (w)
+• Number of bits per word (b)
+• Lower address decoder type (y)
+• Number of banks (ba).
+The valid range of these parameters is specified in :
+
+![image](https://user-images.githubusercontent.com/109063674/212657810-57f95adf-3e58-4e13-a83a-2b8c58382af1.png)
+
 
 ## Design Stage
 This project has 6 developing stages. And we would present all SRAM tech to the open-source comunity. 
