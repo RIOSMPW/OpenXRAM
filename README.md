@@ -69,5 +69,6 @@ Skywater-digital-flow SRAM Unit design https://code.stanford.edu/ee272/skywater-
 Open EDA design flow https://priyanka-raina.github.io/ee372-spring2022/
 
 OpenRAM https://github.com/VLSIDA/OpenRAM
+
 OpenSRAM https://github.com/iamkrvikash/OpenSRAM
 
