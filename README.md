@@ -55,3 +55,11 @@ Memory Compiler（AI based）Roadmap
 ![image](https://user-images.githubusercontent.com/109063674/212636017-53386803-91be-44c0-9cb3-1798460082cb.png)
 
 EDA Design Flow
+
+## Useful Link
+
+ECE 5745 Tutorial 8: SRAM Generators https://cornell-ece5745.github.io/ece5745-tut8-sram/
+Ultra-Low-Power SRAM Design In High Variability Advanced CMOS https://core.ac.uk/download/pdf/4417879.pdf
+SRAM MEMORY ARCHITECTURE https://repository.iiitd.edu.in/jspui/bitstream/handle/123456789/579/Purnima%20Singh_2012151.pdf
+Skywater-digital-flow SRAM Unit design https://code.stanford.edu/ee272/skywater-digital-flow/-/tree/master/SramUnit/design
+Open EDA design flow https://priyanka-raina.github.io/ee372-spring2022/
