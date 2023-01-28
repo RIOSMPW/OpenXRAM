@@ -3,11 +3,14 @@
 
 项目启动时会在project/ip下新建一个文件夹放置项目文件。其共有5个子目录。
 
-**\$workdir/sch ：** 存放电路数据文件，包括IP、test-chip、padring等。
+**\$workdir/sch ：** 
+存放电路数据文件，包括IP、test-chip、padring等。
 
-**\$workdir/sim：**存放仿真数据、激励及配置文件等，子目录可包括Block、IP、test-chip等。
+**\$workdir/sim：**
+存放仿真数据、激励及配置文件等，子目录可包括Block、IP、test-chip等。
 
-**\$workdir/lay** ：存放版图数据文件等，可包括IP、test-chip等。
+**\$workdir/lay：**
+存放版图数据文件等，可包括IP、test-chip等。
 
 **\$workdir/ant：**
 存放ant的检查结果，layout组可写，个人分别新建以自己用户名命名的文件夹，在此文件夹下存放ant的结果及临时文件。
@@ -15,10 +18,11 @@
 **\$workdir/drc：**
 存放drc的检查结果，layout组可写，个人分别新建以自己用户名命名的文件夹，在此文件夹下存放drc的结果及临时文件。
 
-**\$workdir/lvs
-：**存放lvs的检查结果，layout组可写，个人分别新建以自己用户名命名的文件夹，在此文件夹下存放lvs的结果及临时文件。
+**\$workdir/lvs：**
+存放lvs的检查结果，layout组可写，个人分别新建以自己用户名命名的文件夹，在此文件夹下存放lvs的结果及临时文件。
 
-**\$workdir/gds：** 存放版图GDS数据文件等，可包括IP、test-chip等。
+**\$workdir/gds：** 
+存放版图GDS数据文件等，可包括IP、test-chip等。
 
 命名规范
 ========
