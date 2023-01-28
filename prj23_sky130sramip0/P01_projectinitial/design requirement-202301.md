@@ -58,7 +58,8 @@ Pin脚命名规范
 电路输入与标注规范
 ------------------
 
-![](media/923f5396b34b4d4bed2c89f92797534d.png)
+![image](https://user-images.githubusercontent.com/100336131/215266974-f5fd3d2c-920e-42d5-85d7-52b9b5aa211a.png)
+
 
 -   电路输入/输出pin脚分别摆放至左右两端。
 
@@ -73,7 +74,7 @@ Pin脚命名规范
 
 -   模块的仿真结果或者Trimming范围需同白色虚线框内说明
 
-![](media/f3c37c0dd895b38b172293969ef5795a.png)
+![image](https://user-images.githubusercontent.com/100336131/215266985-73091cf7-8169-425d-9fef-67df8b536fca.png)
 
 -   同一大模块内部的子模块symbol宽度保持一致
 
