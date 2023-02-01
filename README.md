@@ -72,3 +72,4 @@ OpenRAM https://github.com/VLSIDA/OpenRAM
 
 OpenSRAM https://github.com/iamkrvikash/OpenSRAM
 
+Design of 1024x32 SRAM (32Kbits) using OpenRAM and SKY130 PDKs https://github.com/vsdip/vsdsram_sky130
