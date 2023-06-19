@@ -1,3 +1,5 @@
+![image](https://github.com/riosmpw/OpenXRAM/assets/100336131/a3743ed1-5b94-4bf9-90f9-9ee7519c3d30)
+
 # OpenXRAM
 OpenXRAM is an open-source SRAM(/RRAM/MRAM).. compiler developed by RIOS Lab.
 
