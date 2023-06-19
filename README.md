@@ -3,7 +3,7 @@ OpenXRAM is an open-source SRAM(/RRAM/MRAM).. compiler developed by RIOS Lab.
 
 Which could generate high performance SRAM IP with open-source techinology.
 
-We are buliding the architecture of this compiler.
+As part of its commitment to the open-source community, RIOS Lab will make the OpenXRAM project completely open-source. This means that anyone can access the code, contribute to the project, and even use the chip in their own products. RIOS Lab believes that by making the project open-source, it will encourage innovation and collaboration in the OpenXRAM, leading to even more exciting and groundbreaking developments in the future.
 
 ![image](https://user-images.githubusercontent.com/109063674/212647474-19261a5a-8632-4d89-a81d-55edf5e494e2.png)
 
