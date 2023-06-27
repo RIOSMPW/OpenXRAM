@@ -3,16 +3,26 @@
 # OpenXRAM
 OpenXRAM is an open-source SRAM(/RRAM/MRAM).. compiler developed by RIOS Lab.
 
-Which could generate high performance SRAM IP with open-source techinology.
+Which could generate high performance SRAM IP with open-source technology.SRAM is a type of memory that is commonly used in microprocessors, digital signal processors, and other integrated circuits.
 
 As part of its commitment to the open-source community, RIOS Lab will make the OpenXRAM project completely open-source. This means that anyone can access the code, contribute to the project, and even use the chip in their own products. RIOS Lab believes that by making the project open-source, it will encourage innovation and collaboration in the OpenXRAM, leading to even more exciting and groundbreaking developments in the future.
 
 ![image](https://user-images.githubusercontent.com/109063674/212647474-19261a5a-8632-4d89-a81d-55edf5e494e2.png)
 
+The framework provides a set of tools and libraries that enable designers to develop custom SRAM circuits that meet their specific requirements. This includes the ability to customize the layout, bitcell design, and other key parameters of the circuit.
+
 OpenXRAM will be complete industrial level compilers that consist of various open-source generators to satisfy the requirements of the circuit desgin. Each of the final building block, the physical layout, will be implemented as a stand-alone, densely packed, pitch-matched array. 
+
+One of the key benefits of OpeXRAM is that it is open-source, meaning that the code is freely available for anyone to download, modify, and distribute. This allows designers to collaborate and build upon each other's work, which can lead to faster innovation and better designs.
+
+Another benefit of OpenXRAM is that it is highly customizable. The framework provides a wide range of options for designing different types of SRAM circuits, including single-port, dual-port, and multi-port designs. This allows designers to tailor their circuits to specific applications, such as high-performance computing, embedded systems, and mobile devices.
+
+In addition to its customization options, OpenXRAM is also designed to be highly efficient. The framework is optimized for power consumption, area usage, and performance, which can help designers to create circuits that are both energy-efficient and high-performing.
 
 With this memory design lib and layout generator,these memory cells(SRAM now, and RRAM/MRAM in the feature) can realize extreme density and performance. In each layout
 generator, we added an option which makes the aspect ratio of the physical layout selectable so that the processor or ASIC designers can choose the aspect ratio according to the convenience of the chip level layout.
+
+
 
 ## Generators of Compiler
 OpenXRAM memory compiler is a set of various, parameterized lib generators. These generators are:
