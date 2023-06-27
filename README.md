@@ -63,6 +63,18 @@ This project has 6 developing stages. And we would present all SRAM tech to the 
 
 Memory Compiler（AI based）Roadmap
 
+## SRAM
+
+Static Random Access Memory (SRAM) is a type of memory that is commonly used in microprocessors, digital signal processors, and other integrated circuits. SRAM is distinguished from dynamic RAM (DRAM) in that it does not require periodic refreshing of the memory cells, which makes it faster and more energy-efficient.
+
+One of the most important features of SRAM is its ability to retain data as long as power is supplied to the circuit. This property makes SRAM an ideal choice for applications where fast, reliable access to data is critical, such as in microprocessors and other high-performance computing systems.
+
+SRAM is a type of volatile memory, meaning that it loses its data when power is removed. However, this is not a significant limitation in most applications, as the memory is typically only used to store temporary data or program instructions that are executed quickly and then discarded.
+
+One of the key benefits of SRAM is its speed. Because the memory cells do not need to be periodically refreshed, SRAM can access data much faster than DRAM, which is slower but much denser. This makes SRAM an ideal choice for applications where speed is critical, such as in microprocessors and other high-performance computing systems.
+
+Another benefit of SRAM is its energy efficiency. Because SRAM does not require periodic refreshing of the memory cells, it is more energy-efficient than DRAM, which must constantly refresh its cells to maintain data integrity. This makes SRAM an ideal choice for battery-powered devices, such as mobile phones and other portable electronics.
+
 ## EDA Tool Flow
 ![image](https://user-images.githubusercontent.com/109063674/212636017-53386803-91be-44c0-9cb3-1798460082cb.png)
 
