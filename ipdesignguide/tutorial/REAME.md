@@ -9,6 +9,13 @@ The file `digital-inverter-openlane-gf180mcu.ipynb` is a digital inverter exampl
 #### Install tools
 ##### Install Xschem
 
+###### Issues
+1. when I execute 'xschem' command in centos 7, it prints 'xschem: error while loading shared libraries: libtk8.6.so: cannot open shared object file: No such file or directory', how can I fix it? 
+> 1. Install tk by 'sudo yum install -y tk tcl tk-devel tcl-devel'
+> 2. Add '/usr/local/lib' into the tail of the file '/etc/ld.so.conf'
+> 3. Update the system's dynamic linker run-time bindings by 'sudo ldconfig'
+> 4. Run xschem again
+
 
 ##### Install Ngspice
 1. Pre-install the tools
