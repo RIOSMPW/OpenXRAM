@@ -98,4 +98,6 @@ xM_i_1 ZN I VDD VNW pmos_6p0 W=1.22e-06 L=5e-07
 
 > You can then examine the generated inv_simulated.csv file to analyze the simulation results.
 
+![sim_inverter.png](images/sim_inverter.png)
+
 
