@@ -1,0 +1,44 @@
+** sch_path: /work/stu/pguo/code/mem_compiler/xscheme_test/INV.sch
+**.subckt INV IN VSS VDD OUT
+*.ipin IN
+*.ipin VSS
+*.ipin VDD
+*.opin OUT
+.GLOBAL VDD! VSS!
+.SUBCKT INV IN OUT
+XM1 OUT IN VSS! VSS! sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 OUT IN VDD! VDD! sky130_fd_pr__pfet_01v8_hvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ENDS
+**** begin user architecture code
+
+VDD VDD! 0 DC 1.8V
+VSS VSS! 0 DC 0
+
+XINV IN OUT INV
+VIN1 IN 0 PWL(0 0V 48ps 0v 52ps 1.8V 98ps 1.8V 102ps 0V 148ps 0V)
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+
+
+.OP
+.TRAN 1ps 148ps
+.OPTIONS POST 
+
+.control
+run
+plot v(IN) v(OUT)
+.endc
+
+**** end user architecture code
+**.ends
+.end

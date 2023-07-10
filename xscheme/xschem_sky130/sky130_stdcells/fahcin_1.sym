@@ -1,0 +1,46 @@
+v {xschem version=3.1.0 file_version=1.2
+* Copyright 2022 Stefan Frederik Schippers
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}
+G {}
+K {type=primitive
+format="@name @@A @@B @@CIN @VGND @VNB @VPB @VPWR @@COUT @@SUM @prefix\\\\fahcin_1"
+template="name=x1 VGND=VGND VNB=VNB VPB=VPB VPWR=VPWR prefix=sky130_fd_sc_hd__ "
+extra="VGND VNB VPB VPWR prefix"
+verilogprefix=sky130_fd_sc_hd__
+highlight=true}
+V {}
+S {}
+E {}
+L 4 -40 -50 40 -50 {}
+L 4 -40 50 40 50 {}
+L 4 -40 -50 -40 50 {}
+L 4 40 -50 40 50 {}
+L 4 -60 -40 -40 -40 {}
+L 4 -60 0 -40 0 {}
+L 4 -60 40 -40 40 {}
+L 4 40 -40 60 -40 {}
+L 4 40 40 60 40 {}
+B 5 -62.5 -42.5 -57.5 -37.5 {name=A dir=in }
+B 5 -62.5 -2.5 -57.5 2.5 {name=B dir=in }
+B 5 -62.5 37.5 -57.5 42.5 {name=CIN dir=in }
+B 5 57.5 -42.5 62.5 -37.5 {name=COUT dir=out }
+B 5 57.5 37.5 62.5 42.5 {name=SUM dir=out }
+T {@symname} -10 -76 0 0 0.3 0.3 {hcenter=true}
+T {A} -35 -44 0 0 0.2 0.2 {}
+T {B} -35 -4 0 0 0.2 0.2 {}
+T {CIN} -35 36 0 0 0.2 0.2 {}
+T {COUT} 35 -44 0 1 0.2 0.2 {}
+T {SUM} 35 36 0 1 0.2 0.2 {}
+T {@name} -25 -22 0 0 0.2 0.2 {}

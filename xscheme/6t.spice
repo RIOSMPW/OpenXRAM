@@ -1,0 +1,81 @@
+** sch_path: /work/stu/pguo/code/mem_compiler/xscheme_test/6t.sch
+**.subckt 6t vddc vpw vsse vnwc wl bl nbl cored ncored
+*.ipin vddc
+*.ipin vpw
+*.ipin vsse
+*.ipin vnwc
+*.ipin wl
+*.ipin bl
+*.ipin nbl
+*.opin cored
+*.opin ncored
+.SUBCKT M6T ncored cored bl nbl wl vsse vpw vddc vnwc
+XM1 ncored cored vsse vpw sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 ncored cored vsse vpw sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 bl wl cored vpw sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 cored ncored vsse vpw sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3 nbl wl ncored vpw sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 ncored cored vddc vnwc sky130_fd_pr__pfet_01v8_hvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM7 cored ncored vddc vnwc sky130_fd_pr__pfet_01v8_hvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ENDS
+**** begin user architecture code
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /work/stu/pguo/lib/share/pdk/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+********
+** | wl  | bl | nbl | ** |core| ncore|
+** | 1   | 1  |  1  | ** | r | nr |  read    |
+** | 1   | 1  |  0  | ** | 1 | 0  |  write 1 |
+** | 1   | 0  |  1  | ** | 0 | 1  |  write 0 |
+** | 1   | 0  |  0  | ** | r | nr |  ?       |
+** | 0   | x  |  x  | ** | 0 | 0  |  nothing |
+
+
+XM6T ncored cored bl nbl wl vsse vpw vddc vnwc M6T
+VDD vddc 0 DC=1.8V
+VSS vsse 0 DC=0V
+VPW vpw 0 DC=0V
+VNWC vnwc 0 DC=1.8V
+VBL bl 0   PWL(0n 0V    30n 0V    40n 1.8V  80n 1.8V  90n 0V 130n 0V 140n 0V   180n 0V   190n 0V 240n 0V)
+VNBL nbl 0 PWL(0n 1.8V  30n 1.8V  40n 0V    80n 0V    90n 0V 130n 0V 140n 1.8V 180n 1.8V 190n 0V 240n 0V)
+* VWL wl 0 DC=1.8V
+VWL wl 0 PWL(0n 1.8V  40n 1.8V 80n 1.8V 90n 0V 130n 0V 140n 1.8V 180n 1.8V 190n 0V 240n 0V)
+
+.OP
+.TRAN 1n 240ns
+.TEMP 25
+.OPTIONS POST
+
+.control
+run
+plot v(wl)
+plot v(bl)
+plot v(nbl) 
+plot v(cored) 
+plot v(ncored)
+.endc
+.save all
+
+
+**** end user architecture code
+**.ends
+.end
