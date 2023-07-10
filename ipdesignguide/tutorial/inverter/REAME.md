@@ -1,4 +1,5 @@
 ## Tutorial
+[TOC]
 
 ### Using OpenLane to run a Digital Inverter targeting the gf180 technology.
 The file `digital-inverter-openlane-gf180mcu.ipynb` is a digital inverter example with OpenLane flow targeting the gf180 based on google Colab. You can checkout the file for more details.
@@ -9,7 +10,7 @@ The file `digital-inverter-openlane-gf180mcu.ipynb` is a digital inverter exampl
 #### Install tools
 ##### Install Xschem
 
-###### Issues
+###### Troubleshooting
 1. when I execute 'xschem' command in centos 7, it prints 'xschem: error while loading shared libraries: libtk8.6.so: cannot open shared object file: No such file or directory', how can I fix it? 
 > Step 1. Install tk by 'sudo yum install -y tk tcl tk-devel tcl-devel'
 > Step 2. Add '/usr/local/lib' into the tail of the file '/etc/ld.so.conf'
@@ -33,7 +34,7 @@ $ sudo make install
 $ ngspice --verison
 ```
 
-#### Design a Digital Inverter spice netlist
+### Design a Digital Inverter spice netlist
 
 #### Run the simulation on Ngspice
 1. Get the Spice Model File from [github](https://github.com/google/globalfoundries-pdk-libs-gf180mcu_fd_pr/blob/main/models/ngspice/sm141064.ngspice). You may need two files, namely `design.ngspice` and `sm141064.ngspice`.
@@ -100,4 +101,17 @@ xM_i_1 ZN I VDD VNW pmos_6p0 W=1.22e-06 L=5e-07
 
 ![sim_inverter.png](images/sim_inverter.png)
 
+### Design a digital inverter using Xschem and simulate it using Ngspice
+You can watch [this video](https://www.youtube.com/watch?v=USCmZuREMTE&list=PLZuGFJzpFksCU7yKn2P_xRTOktVBDWAJf&index=2) for references.
+#### Set variable environment for PDK
+add the following lines into the `.bashrc` or `.zshrc`
+> export PDK_ROOT=~/pdk
+> export PDK=gf180
+#### Use `volare` to manage **gf180mcu** technology, here is the [repo](https://github.com/efabless/volare)
+#### Create soft link to the PDK
+#### Modify `xschemrc` so that it can find the pdk and ngspice
+#### Create new tests and symbols directories
+#### Run `Xschem` and draw the inverter 
+#### Save the curcuit into a symbol
+#### Draw a new `tb` file to simulate the inverter by Ngspice
 
