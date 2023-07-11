@@ -105,12 +105,42 @@ xM_i_1 ZN I VDD VNW pmos_6p0 W=1.22e-06 L=5e-07
 You can watch [this video](https://www.youtube.com/watch?v=USCmZuREMTE&list=PLZuGFJzpFksCU7yKn2P_xRTOktVBDWAJf&index=2) for references.
 #### Set variable environment for PDK
 add the following lines into the `.bashrc` or `.zshrc`
-> export PDK_ROOT=~/pdk
-> export PDK=gf180
+```bash
+export PDK_ROOT=~/pdk
+export PDK=gf180mcuC
+```
 #### Use `volare` to manage **gf180mcu** technology, here is the [repo](https://github.com/efabless/volare)
+```bash
+# To install (or upgrade)
+python3 -m pip install --upgrade --no-cache-dir volare
+
+# To verify it works
+volare --version 
+
+# Listing all available PDKs
+volare ls-remote --pdk gf180mcu
+
+# Listing Installed PDKs
+volare ls --pdk gf180mcu
+
+# Downloading and Enabling PDKs
+volare enable --pdk gf180mcu 120b0bd69c745825a0b8b76f364043a1cd08bb6a
+```
 #### Create soft link to the PDK
+```bash
+$ cd current_dir
+$ ln -s $PDK_ROOT/$PDK/libs.tech/xschem/xschemrc
+```
 #### Modify `xschemrc` so that it can find the pdk and ngspice
+```bash
+# Modify line 33 `append XSCHEM_LIBRARY_PATH :$env(PWD)` to `append XSCHEM_LIBRARY_PATH :$env(PDK_ROOT)/$env(PDK)/libs.tech/xschem`
+# Modify line 328 `set 180MCU_MODELS ${PDK_ROOT}/ngspice/models` to `set 180MCU_MODELS $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice`
+```
 #### Create new tests and symbols directories
+```bash
+cp -r $PDK_ROOT/$PDK/libs.tech/xschem/tests $PDK_ROOT/$PDK/libs.tech/xschem/gf180mcu_tests
+cp -r $PDK_ROOT/$PDK/libs.tech/xschem/symbols $PDK_ROOT/$PDK/libs.tech/xschem/gf180mcu_tests/gf180mcu_fd_pr
+```
 #### Run `Xschem` and draw the inverter 
 #### Save the curcuit into a symbol
 #### Draw a new `tb` file to simulate the inverter by Ngspice
