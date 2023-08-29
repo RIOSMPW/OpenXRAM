@@ -9,7 +9,7 @@
 
 •	3 SRAM存储器介绍 
 
-o	          a. 1RW SRAM
+	          a. 1RW SRAM
 
 o	          b. 1R1W SRAM与2RW SRAM
 
