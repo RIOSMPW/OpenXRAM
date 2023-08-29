@@ -3,39 +3,39 @@
 
 ## 目录
 
-•	1 设计目标
+	1 设计目标
 
-•	2 设计流程
+	2 设计流程
 
-•	3 SRAM存储器介绍 
+	3 SRAM存储器介绍 
 
-	          a. 1RW SRAM
+	    a. 1RW SRAM
 
-o	          b. 1R1W SRAM与2RW SRAM
+	    b. 1R1W SRAM与2RW SRAM
 
-•	4 SRAM架构设计 
+	4 SRAM架构设计 
 
-o	          a.架构图
+	    a.架构图
 
-o	          b.功能单元说明
+	    b.功能单元说明
 
-•	5 SRAM模块设计 
+	5 SRAM模块设计 
 
-o	          a.6T 单元
+	     a.6T 单元
 
-o	          b.灵敏放大器
+	     b.灵敏放大器
 
-o	          c.行/列译码器
+	     c.行/列译码器
 
-o	          d.存储阵列
+	      d.存储阵列
 
-•	6 仿真 
+	6 仿真 
 
-o	         a.模块仿真
+	       a.模块仿真
+	  
+	       b.full IP 仿真
 
-o	         b.full IP 仿真
-
-•	7 小结
+	7 小结
 
 # 1 设计目标
 设计一个2x2bit的SRAM
