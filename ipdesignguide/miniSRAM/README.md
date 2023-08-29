@@ -60,13 +60,17 @@ SRAM(Static Random-Access Memory,SRAM)静态随机存取存储器。 “静态�
  
 由于之前的单端口SRAM读写都是通过BL，因此不能做到同时读写且在低电压下稳定性较差，人们又开发了1R1W SRAM的结构（上图）。相对于6T SRAM，该结构有独立的读字线RWL写字线WWL以及读位线RBL 写位线WBL WBLB。由于读写位线字线的分离，因此该结构可以做到同时读写。与1R1W SRAM 中的某一端口只能完成读或写功能不同，在2RW SRAM （下图）中，每一个端口都可以进行读和写操作。
 # 4 SRAM架构设计
+
 ## a.架构图
+
  ![SRAM架构](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/56d1245f-6087-46f7-ac17-fc487a4dd9bb)
+ 
 ## b.功能单元说明
 存储阵列：存储阵列由一个个6TSRAM组成，每一个SRAM存储一位数据。
 行/列译码器：根据控制电路得到数据读取或写入的地址。
 灵敏放大器：放大微弱的电位差信号从而判断读取的数据是0还是1。
 读/写数据电路：将灵敏放大器得到的数据返回控制电路，根据控制电路将数据写入对应的地址。
+
 # 5 SRAM模块设计
  ## a.6T 单元
     6T SRAM为SRAM中常见的基本单元，其中电路图与工作原理介绍已在第一节给出。接下来需要确定具体晶体管的尺寸,尺寸参考https://www.ques10.com/p/23593/explain-read-and-write-operation-of-6-t-sram-cell-/
@@ -83,38 +87,54 @@ http://dx.doi.org/10.4103/0256-4602.107343
 
 ## c.行/列译码器
   本设计计划制作一个2×2bit的SRAM ，由于每行每列均只有两个单元，则用反相器即可完成选择。
+  
 ## d.存储阵列
   存储阵列由2x2个6T单元组成，其中每一列公用一组位线，行/列译码器的输出端连接到一个两输入与门，两输入与门的输出连接到6T单元的字线，以此实现阵列中单个6T单元的选中。
+  
 # 6 仿真
 ## a.模块仿真
    6T单元仿真：
   6TSRAM写操作电路图如图所示，M1M4 M5M6分别构成一对反相器用来锁存数据，M7M8为传输管，M7M8的栅极连接到字线WL。数据data连接到位线BL，data非连接到BLB(net1)。
+  
  ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/4e572078-41b6-4db4-b20e-dbcbda5f3587)
 
 Data设定为幅值0-1.8V 脉宽5ns 周期10ns
 字线WL设定为幅值0-1.8V 脉宽10ns 周期20ns
 由波形图可知 data与net1 Q与Q’均变化规律相反，说明连接的反相器工作正常。
+
  ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/f838e802-2a29-4b1c-8218-e4604b596526)
+ 
 当WL为高电平时，Q=data,当WL为低电平时，Q保持不变。这表明SRAM的写数据与数据保持功能正常。
+
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/d8ed84a9-7e20-4ebf-bd10-ffb697df1d70)
+
 读操作电路如上图所示，首先将BL与BLB充电至高电平，当WL同时为高时，观察BL端或BLB端的压降，若BLB端电压下降则Q为1，若BL端电压下降则Q为0。
 仿真前将Q点的电压预设为1.6V，2ns时BL与BLB均预充电至高电平1.7V左右，5ns时WL拉高，此时发现BLB端电压明显下降，下降约0.5V，这表明存储的值为1，和预设的状态相符，表明SRAM的读1功能正常。
+
  ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/b0015ef8-6cba-469a-b671-a8704f28849d)
+ 
 随后将Q点电压预设为0V，仿真结果如图，在5ns时BL端能观察到约0.5V的压降，说明存储的值为0,符合预期，表明读该SRAM读0功能正常。
 综上，该SRAM的读写功能仿真均通过。
+
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/5634b459-384d-4e5e-ba76-ebc89ff6ad71)
 
 灵敏放大器仿真:
 
 仿真电路如下
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/d86b00e0-2b62-40d0-acae-67278f9491be)
+
 仿真条件：BL与BLB端放置50fF的电容用来模拟位线寄生电容，仿真前对BL BLB端预设电压值，以模拟实际读取6T单元的情况。BL与BLB端预设为高低电平后，预充电低电平有效，打开预充电电路和SAE，由于一端是低电平，随后在BL或BLB端会产生电压变化。
+
 原理：一端的电压变化接入到灵敏放大器的两级锁存内部，此时一端为高电平输入，一端为中间电平输入，导致有一级反相器工作在过渡区域，此时电压增益最高，经过反相器正反馈后，中间电平端的输入会越来越小，最终导致较低电平输入端的电压为低电平，另一边为高电平。
 
 BL预设0.1V，BLB预设1.8V，仿真结果如下
+
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/fa54b24f-43d2-474f-9e12-6af090bc086b)
+
 可以看出 2ns时预充电打开，3ns时SAE打开，约3.25s后OUT稳定为高电平 OUT- 稳定为低电平
 
 BL预设1.8V，BLB预设0.1V，仿真结果如下
+
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/237dfa78-edcc-4f99-bf7a-6fc5fdc17965)
+
 同样，约3.25s后OUT稳定为低电平 OUT- 稳定为高电平
