@@ -9,31 +9,31 @@
 
 •	3 SRAM存储器介绍 
 
-o	      a. 1RW SRAM
+o	          a. 1RW SRAM
 
-o	      b. 1R1W SRAM与2RW SRAM
+o	          b. 1R1W SRAM与2RW SRAM
 
 •	4 SRAM架构设计 
 
-o	      a.架构图
+o	          a.架构图
 
-o	      b.功能单元说明
+o	          b.功能单元说明
 
 •	5 SRAM模块设计 
 
-o	      a.6T 单元
+o	          a.6T 单元
 
-o	      b.灵敏放大器
+o	          b.灵敏放大器
 
-o	      c.行/列译码器
+o	          c.行/列译码器
 
-o	      d.存储阵列
+o	          d.存储阵列
 
 •	6 仿真 
 
-o	     a.模块仿真
+o	         a.模块仿真
 
-o	     b.full IP 仿真
+o	         b.full IP 仿真
 
 •	7 小结
 
