@@ -37,7 +37,7 @@ b. 1R1W SRAM与2RW SRAM
  ![伪双端口SRAM](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/ea03eadf-8f9b-4cbe-9e3f-afb289f18541)
  ![真双端口SRAM](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/08ab6e52-7506-4882-9bed-f597233171d9)
  
-由于之前的单端口SRAM读写都是通过BL，因此不能做到同时读写且在低电压下稳定性较差，人们又开发了1R1W SRAM的结构，如左图所示。相对于6T SRAM，该结构有独立的读字线RWL写字线WWL以及读位线RBL 写位线WBL WBLB。由于读写位线字线的分离，因此该结构可以做到同时读写。与1R1W SRAM 中的某一端口只能完成读或写功能不同，在2RW SRAM （右图）中，每一个端口都可以进行读和写操作。
+由于之前的单端口SRAM读写都是通过BL，因此不能做到同时读写且在低电压下稳定性较差，人们又开发了1R1W SRAM的结构（上图）。相对于6T SRAM，该结构有独立的读字线RWL写字线WWL以及读位线RBL 写位线WBL WBLB。由于读写位线字线的分离，因此该结构可以做到同时读写。与1R1W SRAM 中的某一端口只能完成读或写功能不同，在2RW SRAM （下图）中，每一个端口都可以进行读和写操作。
 4 SRAM架构设计
 a.架构图
  ![SRAM架构](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/56d1245f-6087-46f7-ac17-fc487a4dd9bb)
