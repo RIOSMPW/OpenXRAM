@@ -138,3 +138,19 @@ BL预设1.8V，BLB预设0.1V，仿真结果如下
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/237dfa78-edcc-4f99-bf7a-6fc5fdc17965)
 
 同样，约3.25s后OUT稳定为低电平 OUT- 稳定为高电平
+
+写控制电路：目的为通过控制信号write来控制输入数据到BL以及BLB端的传输
+BL端   
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/6f41bc51-71ea-4bdc-9984-286a1873a82d)
+
+仿真
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/22f5248f-ba64-4b81-8a54-72912e3fc0da)
+
+当write为高时，输入din与输出net4变化同步，当write为低时，输出保持为低电平
+BLB端
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/a359867c-a3b5-459f-a9bb-318998a625cd)
+
+仿真：
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/0db05e23-c510-4c6d-9536-d140227e16b7)
+
+     当write为高时，输入din与输出net4变化相反，当write为低时，输出保持为高电平
