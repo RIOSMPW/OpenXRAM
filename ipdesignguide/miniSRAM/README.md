@@ -154,3 +154,14 @@ BLB端
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/0db05e23-c510-4c6d-9536-d140227e16b7)
 
      当write为高时，输入din与输出net4变化相反，当write为低时，输出保持为高电平
+单管读写仿真:
+电路由一个 6T单元一个灵敏放大器 bl端和blb端写控制电路构成，电路图如下：
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/3f3e3805-1603-4404-b300-5b0500232399)
+xy作为行列译码器的输出信号，当xy均为高时，字线为高。write写控制信号，高有效。预充电低电平有效。SAE为灵敏放大器的使能信号，高有效。data为写入数据信号，out为读出数据。q为6t单元内部存储的值。
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/b3c86005-cb56-4c34-8f51-40203ef4745c)
+写0读0仿真 图中6-8ns时，xy均为高，此时字线为高，写入数据0。之后write关闭，开启预充电，SAE开启。15ns时读出out信号为0
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/da72650e-2623-41d7-9ee7-f688732713f1)
+写1读1仿真 图中6-8ns时，xy均为高，此时字线为高，写入数据1。之后write关闭，开启预充电，SAE开启。15ns时读出out信号为1
+
+
+
