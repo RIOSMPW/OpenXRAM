@@ -163,5 +163,21 @@ xy作为行列译码器的输出信号，当xy均为高时，字线为高。writ
 ![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/da72650e-2623-41d7-9ee7-f688732713f1)
 写1读1仿真 图中6-8ns时，xy均为高，此时字线为高，写入数据1。之后write关闭，开启预充电，SAE开启。15ns时读出out信号为1
 
+2x2阵列仿真
+电路图如下:
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/3ede0fce-4a41-4629-9f1a-8218b9c19847)
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/cee45a10-0fda-4e72-8d09-458a32a53917)
+整体电路结构介绍：
+行列译码器为反相器，x为0选中第一行，x为1选中第二行，列同。
+每一个6T单元中的字线WL连接到一个两输入与门的输出，两输入与门的输入为sel0 sel1。
+每一个单元的sel0 sel1分别连接到行/列译码器的输出端。
+每一列公用一个灵敏放大器，两个灵敏放大器公用一根预充电线，预充电信号低电平有效。
+数据写入电路write为控制信号，高有效。
 
-
+依次为四个存储单元6T0 6T1 6T2 6T3写入1 0 1 0 然后读出：
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/b938a64e-dc82-4f64-b117-ef1a62b48c98)
+上图中data0 data1为第一列 第二列的输入数据 write控制高有效 xy信号在0-8ns内依次选中存储单元6T0 6T1 6T2 6T3，其中6T0 6T2会接到data0,
+6T1 6T3会接到data1，因此实现了写入1 0 1 0，q为存储单元内存储的值，可以看到存储的值符合预期。
+![image](https://github.com/RIOSMPW/OpenXRAM/assets/143074779/e6503859-6a98-4d1d-8014-0b3850364473)
+上图为数据读出的波形图，6T0 6T2的所在列SA的输出接到out0，6T1 6T3的所在列SA的输出接到out1，预充电信号同此规律，precharge0为第一列precharge1为第二列。
+由于预充电信号低电平有效，在9ns时开启预充电，11ns时两个SAE的使能sae0 sae1拉高，此时观察xy信号，预充电期间，选中为6T0 6T1，读出数据应为 1 0，11ns时out0为1，out1为0，符合预期，12ns后再次开启预充电，15ns时SAE均使能打开，此时xy应读出 6T2 6T3的值，得到out0为1，out1为0符合预期。
